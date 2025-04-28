@@ -1,0 +1,426 @@
+/* All credits goes to people who posted those in Vencord's #css-snippets channel */
+
+/* Revert Servers Size */
+@import url("https://scattagain.github.io/VencordStuff/css/GuildbarRevert.css");
+
+/* Better Member Count (MemberCount plugin) */
+@import url("https://aushevahmad.github.io/awesome-css/modules/vc-membercount.css");
+
+/* Config */
+:root {
+	/* Revert Servers Size */
+	/* You can change the size but only to be less than 48px, you must change the blob scale too */
+	--guildbar-avatar-size: 48px;
+	--blob-scale: 48;
+
+	--guildbar-folder-size: var(--guildbar-avatar-size);
+	--folder-blob-scale: var(--blob-scale);
+
+	/* Compact Codeblocks */
+	--codeblock-height: 250px;
+
+	/* Top Bar */
+	--custom-app-top-bar-height: 22px
+}
+
+/* Top Bar Redesign */
+[class^=bar] {
+	z-index: 3001;
+	padding-left: 8px;
+
+	>[class^=title] {
+		position: relative;
+
+		>[class^=title]>[class^=icon] {
+			height: 16px;
+			width: 16px;
+		}
+	}
+
+	>[class^=trailing] {
+		gap: unset;
+
+		>[class^=recentsIcon] {
+			&:hover {
+				background-color: var(--background-modifier-hover);
+				color: var(--interactive-hover);
+			}
+
+			>[class^=button] {
+				height: 16px;
+				width: 16px;
+				padding: 3px 12px;
+			}
+		}
+
+		>a[href="https://support.discord.com"] {
+			display: none;
+		}
+
+		>[class^=winButtons] {
+			gap: unset;
+
+			>[class^=winButton] {
+				width: calc(var(--custom-app-top-bar-height) * 2);
+			}
+		}
+	}
+}
+
+[class^=layers]>[class^=layer] {
+	opacity: unset !important;
+	padding-top: unset;
+	top: 0;
+	background: var(--app-background-frame);
+}
+
+/* Collapse Chat Buttons */
+[class^=chat_] [class*=textArea_] {
+	margin-right: 32px;
+
+	+[class^=buttons_] {
+		position: absolute;
+		right: 0;
+
+		&:not(:hover)>:not(:has(>[class^=emojiButton])) {
+			display: none;
+		}
+
+		&:not(:hover)>[class^=container_] button>div {
+			margin-left: 8px;
+		}
+
+		>:has(> [class*=emojiButton_]) {
+			order: 99;
+		}
+
+		>:has(> .app-launcher-entrypoint) {
+			order: -1;
+		}
+	}
+}
+
+/* Fix Timestamps */
+span[class*="timestampInline_"] time::before {
+	content: attr(aria-label);
+	font-size: 12px;
+}
+
+span[class*="timestampInline_"] {
+	font-size: 0px !important;
+}
+
+/* Remove Activity Status */
+[class*='membersGroup']:has([role=button]),
+[class*='member'] [class*='container']:has([class*='badges']) {
+	display: none;
+}
+
+/* Revert User Area (select one) */
+/* .visual-refresh div[class^="sidebar_"] section[class^="panels_"] {
+	width: calc(var(--custom-guild-sidebar-width) - var(--custom-guild-list-width) + 1px);
+	left: var(--custom-guild-list-width);
+	bottom: 0px;
+	border-radius: 0px;
+	border: none;
+}
+
+.visual-refresh nav[class*=guilds_] {
+	margin-bottom: unset;
+} */
+
+/* Move User Area Away from Servers (select one) */
+.visual-refresh section.panels_c48ade {
+	left: calc(var(--custom-guild-list-width) + var(--space-xs));
+	width: calc(100% - var(--custom-guild-list-width) - var(--space-xs)*2);
+	box-sizing: content-box;
+
+	.actionButtons_e131a9 button {
+		padding: 0;
+	}
+
+	/* GameActivityToggle Fix (delete if you don't use) */
+	.container__37e49 {
+		padding: var(--space-xxs);
+		gap: var(--space-4);
+
+		>.buttons__37e49 {
+			gap: 0;
+		}
+
+		>.avatarWrapper__37e49 {
+			min-width: 32px !important;
+
+			>.avatar__37e49 {
+				scale: 0.9;
+			}
+		}
+	}
+}
+
+nav.guilds_c48ade {
+	margin-bottom: 0 !important;
+}
+
+.sidebar_c48ade:after {
+	display: none;
+}
+
+/* Remove Quick Reacts */
+.button_f7ecac.hoverBarButton_f84418:nth-of-type(1),
+.button_f7ecac.hoverBarButton_f84418:nth-of-type(2),
+.button_f7ecac.hoverBarButton_f84418:nth-of-type(3),
+.separator_f84418 {
+	display: none;
+}
+
+/* Hide Clan Tags */
+[class*="chipletContainerInner_"]:has([src*="/clan-badges/"]) {
+	display: none;
+}
+
+/* Better App Forms */
+form>div.focusLock__49fc1>div.rootWithShadow__49fc1 {
+	width: var(--modal-width-medium);
+
+	.header__49fc1 {
+		padding: var(--modal-vertical-padding) var(--modal-horizontal-padding);
+		margin-bottom: var(--modal-vertical-padding);
+		border-bottom: var(--border-normal) solid 1px;
+
+		.colorHeaderPrimary_c9946a {
+			text-align: center;
+			font-weight: var(--font-weight-semibold);
+			flex-grow: 1;
+		}
+
+		.closeButton_e858dd {
+			top: unset;
+			right: var(--modal-horizontal-padding);
+			margin-bottom: auto;
+			margin-top: auto;
+
+			.contents__201d5 {
+				height: 24px;
+			}
+		}
+	}
+
+	.submissionWarning_e858dd {
+		display: none;
+	}
+
+	.formItem__1b11b .eyebrow_b717a1 {
+		margin-bottom: 4px;
+
+		.errorMessage_b717a1 {
+			color: var(--text-danger);
+		}
+	}
+
+	.input__0f084.error__0f084:focus {
+		color: var(--text-normal);
+		transition-property0: border-color, color;
+	}
+
+	.footer__49fc1 {
+		justify-content: space-between;
+	}
+}
+
+/* Compact Channels List */
+.unread__2ea32 {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	left: auto;
+	right: 4px;
+	top: 16px;
+}
+
+.modeSelected__2ea32 .link__2ea32 {
+	background-color: var(--brand-700) !important;
+}
+
+.link__2ea32 {
+	padding-left: 16px;
+	border-radius: 0px !important;
+
+	&::before {
+		width: 1px;
+		left: 10px;
+		background-color: rgba(255, 255, 255, 0.3);
+
+	}
+
+	&:hover {
+		background-color: var(--brand-800) !important;
+	}
+
+	.icon__2ea32 {
+		scale: 0.8;
+	}
+
+	.linkTop__2ea32 {
+		gap: 4px;
+	}
+}
+
+.wrapper__2ea32 {
+	margin: 0px;
+}
+
+.name__2ea32,
+.overflow__82b15 {
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.2857142857142858;
+}
+
+.wrapper__29444 {
+	padding: var(--space-xxs) var(--space-xs);
+	padding-left: 4px;
+	box-sizing: content-box;
+
+	.mainContent__29444 {
+		flex-direction: row-reverse !important;
+		flex: none !important;
+		gap: 8px;
+	}
+
+	.icon__29444 {
+		scale: 1.25;
+	}
+}
+
+.spine__5b40b {
+	display: none !important;
+}
+
+.spineBorder__5b40b {
+	left: 10px;
+	width: 1px;
+	background: rgba(255, 255, 255, 0.3) !important;
+	height: 100%;
+}
+
+.typeThread__2ea32 {
+	margin-left: 10px !important;
+
+	.link__2ea32 {
+		padding-left: 20px !important;
+	}
+}
+
+/* Compact Members List */
+.member__5d473 {
+	height: 32px !important;
+	padding: var(--space-xxs) var(--space-xs);
+	margin: calc(var(--space-xxs) / 2) var(--space-xxs);
+
+	&:hover {
+		background: var(--bg-overlay-hover, var(--background-modifier-hover));
+	}
+}
+
+.memberInner__5d473,
+.childContainer__91a9d {
+	padding: 0px !important;
+	display: flex !important;
+	align-items: center !important;
+	align-content: center !important;
+	max-width: 100%;
+}
+
+.avatar__91a9d {
+	scale: 0.75;
+	margin-right: 4px;
+}
+
+.content__91a9d {
+	display: flex;
+	align-items: center;
+	align-content: center;
+	gap: 8px;
+}
+
+.memberInner__5d473 {
+	position: absolute;
+	top: calc(0px - var(--space-xxs) / 3);
+	left: var(--space-xxs);
+	max-width: calc(100% - var(--space-sm));
+
+}
+
+.membersGroup_c8ffbb {
+	padding: var(--space-xs) var(--space-xxs) var(--space-xs) var(--space-sm) !important;
+}
+
+/* Compact Codeblocks */
+.codeContainer__75297>code,
+.vc-shiki-code {
+	max-height: var(--codeblock-height);
+	overflow-y: scroll;
+
+	&::-webkit-scrollbar {
+		height: 8px;
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-corner {
+		background-color: transparent;
+	}
+
+	&::-webkit-scrollbar-track,
+	&::-webkit-scrollbar-thumb {
+		visibility: hidden;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-clip: padding-box;
+		background-color: var(--scrollbar-thin-thumb);
+		border: 2px solid transparent;
+		border-radius: 4px;
+		min-height: 40px;
+	}
+
+	&:hover::-webkit-scrollbar-track,
+	&:hover::-webkit-scrollbar-thumb {
+		visibility: visible;
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: var(--scrollbar-thin-track);
+		border: 2px solid var(--scrollbar-thin-track);
+		border-color: var(--scrollbar-thin-track);
+	}
+}
+
+.vc-shiki-btns {
+	position: sticky;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.vc-shiki-code {
+	padding: 10px 0 0 10px !important;
+}
+
+/* Full Screen Settings */
+.sidebarRegion__23e6b {
+	flex: none;
+}
+
+.contentColumn__23e6b,
+.customColumn__23e6b {
+	max-width: 100%;
+	min-height: 100%;
+}
+
+.accountProfileCard__1fed1 .mask__68edb mask circle {
+	display: none;
+}
+
+.avatar__1fed1 {
+	top: 210px;
+}
