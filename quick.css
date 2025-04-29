@@ -30,6 +30,7 @@
 
 	>[class^=title] {
 		position: relative;
+		display: none;
 
 		>[class^=title]>[class^=icon] {
 			height: 16px;
