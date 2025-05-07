@@ -3,6 +3,9 @@
 /* Revert Servers Size */
 @import url("https://scattagain.github.io/VencordStuff/css/GuildbarRevert.css");
 
+/* Move the Status Bubble Away */
+@import url("https://raw.githubusercontent.com/Augenbl1ck/Discord-Styles/refs/heads/main/customStatusBubble.css");
+
 /* Better Member Count (MemberCount plugin) */
 @import url("https://aushevahmad.github.io/awesome-css/modules/vc-membercount.css");
 
