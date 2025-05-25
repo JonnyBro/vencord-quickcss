@@ -317,6 +317,7 @@ form>div.focusLock__49fc1>div.rootWithShadow__49fc1 {
 }
 
 /* Compact Members List */
+/*
 .member__5d473 {
 	height: 32px !important;
 	padding: var(--space-xxs) var(--space-xs);
@@ -358,7 +359,7 @@ form>div.focusLock__49fc1>div.rootWithShadow__49fc1 {
 
 .membersGroup_c8ffbb {
 	padding: var(--space-xs) var(--space-xxs) var(--space-xs) var(--space-sm) !important;
-}
+} */
 
 /* Compact Codeblocks */
 .codeContainer__75297>code,
